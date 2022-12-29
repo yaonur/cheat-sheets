@@ -1,5 +1,25 @@
 # WSL Cheat-Sheet
 ## Backup and Restore WSL
+
+### Listing Running Distros
+```powershell
+wsl --list --verbose
+```
+### Starting/Restarting a Distro
+```powershell
+wsl --distribution DISTRO-NAME
+```
+
+### Terminate a Running Distro
+```powershell
+wsl --t DISTRO-NAME
+```
+
+### Terminate All Running Distros and WSL process
+```powershell
+wsl --shutdown
+```
+
 ### Backup a WSL Distro
 ```powershell
 wsl --export (distribution) (filename.tar)
@@ -65,3 +85,8 @@ netsh advfirewall firewall delete rule name=$port
 ```powershell
 netsh interface portproxy show v4tov4
 ```
+
+## Linux desktop in WSL2
+
+With WSL2 it's possible to install and run a Linux desktop environment (XFCE). A tutorial on how
+to implement that, can be found [here](https://thedatabaseme.de/2022/05/15/shorty-running-xfce-linux-desktop-on-wsl2/).
