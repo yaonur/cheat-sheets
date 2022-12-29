@@ -1,12 +1,12 @@
 # Argo CD
-**Argo CD** is a declarative, GitOps continuous delivery tool for **Kubernetes ([[kubernetes]])**. It allows application definitions, configurations, and environments should be declarative and version controlled. Application deployment and lifecycle management should be automated, auditable, and easy to understand.
+**Argo CD** is a declarative, GitOps continuous delivery tool for **[Kubernetes](../kubernetes/kubernetes.md)**. It allows application definitions, configurations, and environments should be declarative and version controlled. Application deployment and lifecycle management should be automated, auditable, and easy to understand.
 
 Documentation & Project Homepage: [Argo CD Docs](https://argo-cd.readthedocs.io/en/stable/)
 
 ---
 ## Installation
 
-1. Install Argo CD on a **Kubernetes ([[kubernetes]])** Cluster, using **kubectl ([[kubectl]])**.
+1. Install Argo CD on a **[Kubernetes](../kubernetes/kubernetes.md)** Cluster, using **[kubectl](../kubernetes/kubectl.md)**.
 
 ```bash
 kubectl create namespace argocd
@@ -14,7 +14,7 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-2. Add **Traefik IngressRoute ([[traefik]])**. 
+2. Add **[Traefik IngressRoute](traefik.md)**. 
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
@@ -63,7 +63,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 1. Create a github token: https://github.com/settings/tokens
 
-2. Add new repository in ArgoCD via **kubectl ([[kubectl]])** or the GUI
+2. Add new repository in ArgoCD via **[kubectl](../kubernetes/kubectl.md)** or the GUI
 
 ```yaml
 apiVersion: v1  
@@ -73,7 +73,7 @@ metadata:
   labels:  
     argocd.argoproj.io/secret-type: repository  
 stringData:  
-  url: https://github.com/xcad2k/private-repo 
+  url: https://github.com/<user>/<private-repo>
   password: <github-token> 
   username: not-used
 ```
@@ -145,10 +145,3 @@ spec:
         server: '{{server}}'
         namespace: default
 ```
-
-## Further information
-
-More examples and tutorials regarding ArgoCD can be found in the link list below:
-
-- Basic tutorial for installation and configuration: [Let loose the squid - Deploy ArgoCD the declarative way](https://thedatabaseme.de/2022/06/05/let-loose-the-squid-deploy-argocd-the-declarative-way/)
-- Writing ArgoCD Plugins: [ArgoCD Custom Plugins](https://dev.to/tylerauerbeck/argocd-custom-plugins-creating-a-custom-plugin-to-process-openshift-templates-4p5m)

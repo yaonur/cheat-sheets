@@ -6,7 +6,7 @@ PowerShell was made open-source and cross-platform with PowerShell Core, and can
 
 ### Windows
 1. Download MSI Package from the [Official PowerShell Docs](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
-2. Set up PowerShell Profile in Windows Terminal ([[windows-terminal]]).
+2. Set up PowerShell Profile in [Windows Terminal](windows-terminal.md).
 ```json
 "commandline": "pwsh.exe -nologo",
 "name": "Powershell",
@@ -38,5 +38,40 @@ code $PROFILE
 ```
 
 ## (Optional) Set up starship Prompt
-You can customize the look and feel of PowerShell with the Starship Prompt ([[starship]]).
+You can customize the look and feel of PowerShell with the [Starship Prompt](starship.md).
 
+## Create
+
+Create a file named `config`:
+
+```powershell
+New-Item config -type file
+```
+
+## Delete
+
+Delete everything inside the folder and subfolders (equivalent to `rm -rf`):
+
+```powershell
+Remove-Item .\helm-charts\* -Recurse -Force
+```
+
+## Environment Variables
+
+Show current path environment variable:
+
+```powershell
+$env:Path
+```
+
+Append to path environment variable:
+
+```powershell
+$env:Path += ';C:\Users\<user>\scoop\shims'
+```
+
+Making [changes permanent](https://stackoverflow.com/a/714918):
+
+```powershell
+code $PROFILE
+```

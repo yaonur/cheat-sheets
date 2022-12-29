@@ -1,41 +1,7 @@
-## Windows Terminal.
-### Install Windows Terminal
-Windows Store: [Windows Terminal](https://aka.ms/terminal)
-### Keyboard Shortcuts
+# Windows Terminal
 
-1. Applic­ation commands
-    - ALT - F4: Close window
-    - CTRL - S­HIFT - F: Find
-    - CTRL - S­HIF­T - SPACE: Open dropdown
-    - CTRL - ,: Open settings file
-    - ALT - ENTER - F11: Toggle full screen
+Windows Terminal is a multi-tabbed terminal emulator that Microsoft has developed for Windows 10 and later as a replacement for Windows Console. It can run any command-line app in a separate tab. It is preconfigured to run Command Prompt, PowerShell, WSL, SSH, and Azure Cloud Shell Connector. Windows Terminal comes with its own rendering back-end; starting with version 1.11 on Windows 11, command-line apps can run using this newer back-end instead of the old Windows Console.
 
-2. Tab commands
-    - CTRL - S­HIFT - D: Duplicate tab
-    - CTRL - S­HIFT - T: New tab
-    - CTRL - S­HIFT - P: New tab from profile p=1..9
-    - CTRL - TAB: Switch to next tab
-    - CTRL - S­HIF­T - TAB: Switch to prev tab
-    - CTRL - ALT - N: Switch to tab n=0..9
+Repository: https://github.com/Microsoft/Terminal
 
-3. Pane commands
-    - ALT - SH­IFT - D: Split pane optimally. Active profile
-    - ALT - SH­IFT -  -: Split pane horizontally. Default profile
-    - ALT - SH­IFT - +: Split pane vertically. Default profile
-    - ALT - SHIFT - ARROWS: Resize pane
-    - ALT - ARROWS: Move pane focus
-    - CTRL - S­HIFT - W: Close innermost pane, tab, or window
-
-4. Clipboard commands
-    - CTRL - C: Copy
-    - CTRL - V: Paste
-
-5. Scrollback commands
-    - CTRL - S­HIFT - UP: Scroll up
-    - CTRL - S­HIF­T - DOWN: Scroll down
-    - CTRL - S­HIF­T - PGUP: Scroll page up
-    - CTRL - S­HIF­T - PGDN: Scroll page down
-6. Visual adjustment commands
-    - CTRL - =: Increase font size
-    - CTRL -  -: Decrease font size
-    - CTRL - 0: Reset font size
+Website: https://aka.ms/terminal
