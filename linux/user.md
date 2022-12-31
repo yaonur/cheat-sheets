@@ -1,4 +1,5 @@
 # User Management
+[bash][linux]
 
 COMMAND | DESCRIPTION
 ---|---
