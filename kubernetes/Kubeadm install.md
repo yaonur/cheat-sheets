@@ -97,7 +97,11 @@ sudo sed -i 's/            SystemdCgroup = false/            SystemdCgroup = tru
 sudo systemctl restart containerd
 
 ```
+let pods to be opened in control-plane node
 
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
 
 
 [official docs](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)

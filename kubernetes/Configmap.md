@@ -1,6 +1,5 @@
 [[kubernetes]]
 [official link](https://kubernetes.io/docs/concepts/configuration/configmap/)
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -20,3 +19,5 @@ data:
     color.bad=yellow
     allow.textmode=true    
 ```
+
+
