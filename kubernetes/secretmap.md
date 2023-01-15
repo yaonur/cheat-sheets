@@ -14,3 +14,11 @@ data:
 echo -n uername |base64
 
 ```
+
+```bash
+kubectl apply -f secret.yaml
+
+kubectl create secret generic my-secret --from-literal=SOME_TOKEN=somepass123
+
+kubectl create secret generic my-secret --from-file=cert=/path/to/cert/file
+```
