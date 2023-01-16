@@ -46,6 +46,10 @@ mkdir -p $HOME/.kube
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ```
+- Copy conf file from host to workstation:
+```bash
+sudo scp so2@192.168.2.10:/home/so2/.kube/config $HOME/.kube/config
+```
 Alternatif
 ```bash
 export KUBECONFIG=/etc/kubernetes/admin.conf
@@ -103,5 +107,49 @@ let pods to be opened in control-plane node
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 ```
 
+### Add new certificate
+[link for this issue](https://blog.scottlowe.org/2019/07/30/adding-a-name-to-kubernetes-api-server-certificate/)
+get the config yml
+```
+kubectl -n kube-system get configmap kubeadm-config -o jsonpath='{.data.ClusterConfiguration}' > kubeadm.yaml
+```
+
+```yaml
+apiServer:
+  certSANs:
+  - "172.29.50.162"
+  - "k8s.domain.com"
+  - "other-k8s.domain.net"
+  extraArgs:
+    authorization-mode: Node,RBAC
+  timeoutForControlPlane: 4m0
+```
+
+First, move the existing API server certificate and key (if `kubeadm` sees that they already exist in the designated location, it won’t create new ones):
+
+```
+mv /etc/kubernetes/pki/apiserver.{crt,key} ~
+```
+
+Then, use `kubeadm` to _just_ generate a new certificate:
+
+```
+kubeadm init phase certs apiserver --config kubeadm.yaml
+```
+
+This command will generate a new certificate and key for the API server, using the specified configuration file for guidance. Since the specified configuration file includes a `certSANs` list, then `kubeadm` will automatically add those SANs when creating the new certificate.
+
+The final step is restarting the API server to pick up the new certificate. The easiest way to do this is to kill the API server container using `docker`:
+
+1.  Run `docker ps | grep kube-apiserver | grep -v pause` to get the container ID for the container running the Kubernetes API server. (The container ID will be the very first field in the output.)
+2.  Run `docker kill <containerID>` to kill the container.
+
+If your nodes are running containerd as the container runtime, the commands are a bit different:
+
+1.  Run `crictl pods | grep kube-apiserver | cut -d' ' -f1` to get the Pod ID for the Kubernetes API server Pod.
+2.  Run `crictl stopp <pod-id>` to stop the Pod.
+3.  Run `crictl rmp <pod-id>` to remove the Pod.
+
+The Kubelet will automatically restart the container, which will pick up the new certificate. As soon as the API server restarts, you will immediately be able to connect to it using one of the newly-added IP addresses or hostnames.
 
 [official docs](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
