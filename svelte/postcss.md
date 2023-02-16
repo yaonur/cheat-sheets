@@ -1,8 +1,13 @@
+[svelte]
 ``` shell
 pnpm i -D postcss-preset-env postcss-load-config @types/postcss-preset-env
 ```
 
 create a postcss.config.cjs file
+```bash
+touch postcss.config.cjs
+```
+
 
 ```js
 const postcssPresetEnv = require('postcss-preset-env')
