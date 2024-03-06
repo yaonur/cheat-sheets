@@ -9425,5 +9425,5 @@ tests with globbing, e.g., `bats test/browse*` and `bats test/folders*`.
 
 ## See also
 
-- [Obsidian](obsidian.md)
+- [Obsidian](text/obsidian.md)
 - [Pandoc](pandoc.md)
