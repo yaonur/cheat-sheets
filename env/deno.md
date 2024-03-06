@@ -1,0 +1,13 @@
+vscode settings
+```json
+	{
+	  "deno.enablePaths": [
+	    "supabase/functions"
+	  ],
+	  "deno.lint": true,
+	  "deno.unstable": true,
+	  "[typescript]": {
+	    "editor.defaultFormatter": "denoland.vscode-deno"
+	  }
+	}
+```
