@@ -30,3 +30,17 @@ folder structre is
 indesx.ts
 	/server
 		server.ts
+
+#### ts config for deno 
+```json
+{
+    "compilerOptions": {
+      "module": "esnext",
+      "target": "esnext",
+      "esModuleInterop": true,
+      "moduleResolution": "node"
+    },
+    "include": ["./**/*"],
+    "exclude": ["./server/**/*"]
+  }
+```
