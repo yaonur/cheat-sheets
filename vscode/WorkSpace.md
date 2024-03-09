@@ -44,3 +44,17 @@ indesx.ts
     "exclude": ["./server/**/*"]
   }
 ```
+##### .vscode/settings.json
+better do settings here
+```json
+{
+  "deno.enablePaths": [
+    "db/supabase/functions"
+  ],
+  "deno.lint": true,
+  "deno.unstable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  }
+}
+```
